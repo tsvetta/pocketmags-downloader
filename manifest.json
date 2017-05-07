@@ -1,0 +1,44 @@
+{
+    "manifest_version": 2,
+    "name": "pocketmags-downloader",
+    "author": "tsvetta",
+    "version": "1.0",
+
+    "description": "Allows you to download blob files with images from http://pocketmags.com/",
+    "icons": {
+        "128": "icon128.png"
+    },
+
+    "page_action": {
+      "default_title": "Pocketmags Downloader",
+      "default_icon": {
+        "128": "icon128.png"
+      }
+    },
+
+    "background" : {
+        "scripts" : ["background.js"],
+        "persistent": false
+    },
+
+    "content_scripts": [{
+        "matches": [
+            "*://pocketmags.com/*",
+            "http://*.pocketmags.com/*"
+        ],
+        "js": [
+            "content.js"
+        ]
+    }],
+
+    "options_page": "options.html",
+
+    "permissions": [
+      "tabs",
+      "declarativeContent",
+      "downloads",
+      "storage",
+      "http://pocketmags.com/*",
+      "http://*.pocketmags.com/*"
+    ]
+}
